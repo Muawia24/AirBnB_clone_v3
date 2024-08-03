@@ -5,7 +5,7 @@
 from flask import Flask
 from models import storage
 from api.v1.views import app_views
-
+from os import environ
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
@@ -18,5 +18,11 @@ def teardown(exception):
 
 
 if __name__ == "__main__":
+    Host = environ.get('HBNB_API_HOST')
+    if not Host:
+        host = '0.0.0.0'
+    Port = environ.get('HBNB_API_PORT')
+    if not Port:
+        port = '5000'
 
-    app.run(host='0.0.0.0', port='5000', threaded=True)
+    app.run(host=Host, port=Port, threaded=True)
