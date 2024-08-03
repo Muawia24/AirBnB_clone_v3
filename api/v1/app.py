@@ -2,7 +2,7 @@
 """Api app v1 module """
 
 
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
 from os import environ
@@ -15,6 +15,12 @@ app.register_blueprint(app_views)
 def teardown(exception):
     """Tears down app """
     storage.close()
+
+
+@app.errorhandler(404)
+def handle_error(e):
+    """Handles Not Found error """
+    return jsonify({"error": "Not found"})
 
 
 if __name__ == "__main__":
