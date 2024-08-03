@@ -2,7 +2,7 @@
 """Api app v1 module """
 
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, make_response
 from models import storage
 from api.v1.views import app_views
 from os import environ
@@ -20,7 +20,7 @@ def teardown(exception):
 @app.errorhandler(404)
 def handle_error(e):
     """Handles Not Found error """
-    return jsonify({"error": "Not found"})
+    return make_response(jsonify({"error": "Not found"}), 404)
 
 
 if __name__ == "__main__":
