@@ -44,9 +44,9 @@ def post_state():
     """Creates a State """
     json_data = request.get_json()
     if not json_data:
-        return make_response(jsonify({"message": "Not a JSON"}), 400)
+        abort(400, description="Not a JSON")
     if not json_data['name']:
-        return make_response(jsonify({"message": "Missing name"}), 400)
+        abort(400, description="Missing name")
 
     new_state = State(**json_data)
     new_state.save()
@@ -62,7 +62,7 @@ def update_state(state_id):
 
     json_data = request.get_json()
     if not json_data:
-        return make_response(jsonify({"message": "Not a JSON"}), 400)
+         abort(400, description="Not a JSON")
     ignore = ['id', 'created_at', 'updated_at']
     for key, value in json_data.items():
         if key not in ignore:
