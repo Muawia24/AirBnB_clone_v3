@@ -16,7 +16,7 @@ def all_amenities():
     """Retrieves the list of all Amenity objects """
     amenities = storage.all(Amenity).values()
     amenities_list = []
-    for amenity in amenities_list:
+    for amenity in amenities:
         amenities_list.append(amenity.to_dict())
     return jsonify(amenities_list)
 
@@ -50,7 +50,7 @@ def post_amenity():
     json_data = request.get_json()
     if not json_data:
         abort(400, description="Not a JSON")
-    if not json_data['name']:
+    if 'name' not in json_data:
         abort(400, description="Missing name")
 
     new_amenity = City(**json_data)
