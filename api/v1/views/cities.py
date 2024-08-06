@@ -53,7 +53,7 @@ def post_city(state_id):
     json_data = request.get_json()
     if not json_data:
         abort(400, description="Not a JSON")
-    if not json_data['name']:
+    if 'name' not in json_data:
         abort(400, description="Missing name")
 
     new_city = City(**json_data)
