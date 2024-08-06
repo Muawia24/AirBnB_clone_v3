@@ -4,8 +4,8 @@ view for Amenity objects that handles all default RESTFul API actions
 """
 from models import storage
 from models.state import State
-from models.state import City
-from models.state import Amenity
+from models.city import City
+from models.amenity import Amenity
 from api.v1.views import app_views
 from flask import jsonify, abort, request, make_response
 
