@@ -53,7 +53,7 @@ def post_amenity():
     if 'name' not in json_data:
         abort(400, description="Missing name")
 
-    new_amenity = City(**json_data)
+    new_amenity = Amenity(**json_data)
     new_amenity.save()
     return make_response(jsonify(new_amenity.to_dict()), 201)
 
