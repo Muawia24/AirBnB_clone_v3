@@ -71,7 +71,7 @@ class FileStorage:
 
     def get(self, cls, id):
         """A method to retrieve one object"""
-        if cls not in classes.values():
+        if cls not in classes:
             return None
         all_cls = storage.all(cls).values()
         for obj in all_cls:
