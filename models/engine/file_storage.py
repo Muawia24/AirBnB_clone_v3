@@ -73,7 +73,7 @@ class FileStorage:
         """A method to retrieve one object"""
         if cls not in classes.values():
             return None
-        all_cls = all(cls).values()
+        all_cls = storage.all(cls).values()
         for obj in all_cls:
             if obj.id == id:
                 return obj
