@@ -79,9 +79,6 @@ class DBStorage:
         """Returns the object based on the class
         and its ID, or None if not found """
         print (str(cls).split('.')[-1])
-        if cls not in classes.values():
-            return None
-
         for key, value in classes.items():
             if value is cls:
                 try:
@@ -89,7 +86,7 @@ class DBStorage:
                     return obj
                 except:
                     return None
-       return None         
+        return None         
                 
         
     def count(self, cls=None):
